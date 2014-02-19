@@ -7,6 +7,7 @@ package com.jsfrichfaces.registation;
  */
 public class Registation {
 	
+	private int some;
 	private int rid;
 	private String uname;
 	private String fname;

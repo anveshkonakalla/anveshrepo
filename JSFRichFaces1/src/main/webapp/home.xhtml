@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:cc="http://java.sun.com/jsf/composite">
+ 
+    <h:head>
+        <title>JSF 2.0 Registation</title>
+        <script type="text/javascript">
+        
+        function showWorkingIndicator(data) {
+           showIndicatorRegion(data,"workingIndicator");
+        }
+        function showIndicatorRegion (data, regionId) {
+		        if (data.status == "begin") {
+		        showElement(regionId);
+		        } else if (data.status == "success") {
+        		hideElement(regionId);
+        		}
+        }
+        function showElement(id) {
+        	document.getElementById(id).style.display = "inline";   
+        	document.getElementById("vunamemsg").style.display= "none";
+        }
+        function hideElement(id) {
+        	document.getElementById(id).style.display= "none";
+        	document.getElementById("vunamemsg").style.display= "inline";
+        }
+        
+        </script>
+    
+
+    </h:head>
+    
+    
+    
+    <h:body>
+    	<center><h3>JSF 2.0 Registation Example</h3></center>
+    	<h:form id="form1" >
+    	
+    		  <table border="0">
+    		  	<tr>
+    		  		<td>
+	    		  	   <h:outputLabel value="Register ID :" ></h:outputLabel></td>
+	    		    <td>
+    		   		  <h:inputText value="#{registerservice.rid}" disabled="true" id="rid"></h:inputText> 
+    		   		  <rich:message for="rid"></rich:message>    	
+	    		   	</td>	    		  	
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+   		  	   		 <h:outputLabel value="User Name :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+   		  	   		 <h:inputText value="#{registerservice.uname}" id="uname" required="true" requiredMessage="username is required" >
+   		   		       <f:validator validatorId="validate" for="uname" ></f:validator>
+   		   		       <f:ajax event="change" render="unamemsg" onevent="showWorkingIndicator" ></f:ajax>     	  		         		       	       	     	  		       
+   	  		         </h:inputText>
+   	  		         </td>
+   	  		        <td><span id="workingIndicator" style="display: none; font-size: 100%"><img src="4.gif" /></span>
+   	  		            <span style="display: none;" id="vunamemsg"><rich:message for="uname" id="unamemsg" ></rich:message></span>    	  		                	  		         
+   	  		       </td>
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+    		  	   	  <h:outputText value="First Name :"></h:outputText>
+    		  	   </td>
+    		  	   <td>
+   		  	   		  <h:inputText value="#{registerservice.fname}" id="fname">				 	
+				      </h:inputText>
+				      <rich:message for="fname"></rich:message>    		  	    	  
+    		  	   </td>
+    		  	</tr>
+    		    <tr>
+    		  	   <td>
+    		  	   	  <h:outputLabel value="Last Name :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+    		  	   	 <h:inputText value="#{registerservice.lname}" id="lname"></h:inputText>
+					 <rich:message for="lname"></rich:message>
+    		  	   </td>
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+    		  	      <h:outputLabel value="Password :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+    		  	      <h:inputSecret value="#{registerservice.pwd}" id="pwd"></h:inputSecret>
+					  <rich:message for="pwd"></rich:message>					
+    		  	   </td>
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+    		  	      <h:outputLabel value="Conform Password :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+    		  	      <h:inputSecret value="#{registerservice.conformpwd}" id="cpwd"></h:inputSecret>	
+					  <rich:message for="cpwd"></rich:message>	
+    		  	   </td>
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+    		  	      <h:outputLabel value="E-Mail :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+    		  	      <h:inputText value="#{registerservice.email}"  id="email" requiredMessage="Email is Required" validatorMessage="Invalid email address">			
+						   <f:validateRegex
+	                          pattern="^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+)*$">
+	                        </f:validateRegex>
+	                   	  <rich:validator  />  					  					     		
+    	    		  </h:inputText>
+    	    	   </td>
+    	    	   <td>
+    	    	     <rich:message for="email" id="emailmsg"></rich:message>
+    		  	   </td>
+    		  	</tr>
+    		  	<tr>
+    		  	   <td>
+    		  	     <h:outputLabel value="Phone Number :"></h:outputLabel>
+    		  	   </td>
+    		  	   <td>
+    		  	     <h:inputText value="#{registerservice.phoneno}" id="phno">    	    			
+    	    		 </h:inputText>
+    	    		 <rich:message for="phno"></rich:message>    	    		
+    		  	   </td>
+    		  	</tr>
+    		  	<tr>
+    		  	  <td>
+    		  	  </td>
+    		  	  <td>
+    		  	    <a4j:commandButton id="submit" action="#{registerservice.registationsave}" value="Submit" >    	  				
+	    	  	    </a4j:commandButton>    	
+	    	  	  </td>  				    
+    		  	</tr>
+    		  </table>
+     
+    	   
+    	</h:form>
+      </h:body>
+</html>

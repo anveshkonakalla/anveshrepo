@@ -1,0 +1,35 @@
+<html xmlns='http://www.w3.org/1999/xhtml'
+	     xmlns:h="http://java.sun.com/jsf/html"
+	     xmlns:f="http://java.sun.com/jsf/core" > 
+	 
+	 <h:head><title>Welcome to JSF_PrimeFaces_Hibernate Project</title></h:head>
+	 <body>
+	     <h:form>
+	     <table>
+	       <tr>
+	        <td><h:outputLabel for='name' value='Name:'/></td>
+	        <td><h:inputText id='name' value='#{userMBean.name}' required="true" requiredMessage="#{msg.name_req}" validatorMessage="#{msg.range}" > 
+	             <f:validateLength minimum="3" maximum="7" for="name"/>
+	              <!-- <f:validator validatorId="validate" for="name" ></f:validator> -->        
+	             </h:inputText> 
+	        	<font color="#FF0000"> 
+				<h:message for="name" /></font>	
+							
+	        </td>
+	       </tr>
+	       <tr>
+	        <td><h:outputLabel for='surname' value='Surname:' /></td>
+	        <td><h:inputText id='surname' value='#{userMBean.surname}' required="true" requiredMessage="#{msg.surname_req}"/>
+	            <font color="#FF0000" >
+				<h:message for="surname" /></font>
+		    </td>        
+	       </tr>
+	          <tr>
+	        <td><h:commandButton  id='submit' value='Save' action="#{userMBean.save}" ajax='true'/></td>
+	      
+	       </tr>
+	      </table>
+	      
+	     </h:form>
+	</body>
+</html>

@@ -14,6 +14,7 @@ public class Test1 {
 		System.out.println("eclipse1:m2");
 		System.out.println("eclipse2:m2()");
 		System.out.println("1");
+		System.out.println("234");
 	}
 	
 

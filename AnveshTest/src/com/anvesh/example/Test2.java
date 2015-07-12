@@ -7,8 +7,7 @@ public class Test2 {
 		System.out.println("some");
 	}
 	public static void main(String[] args) {
-		
-		System.out.println("comment added");
+		new Test2().m();
 	}
 
 }

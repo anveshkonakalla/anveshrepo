@@ -10,6 +10,9 @@ public class Test1 {
 		System.out.println("some.");
 		System.out.println("some1");
 	}
+	public void m3() {
+		
+	}
 	
 
 }

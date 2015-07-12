@@ -16,6 +16,9 @@ public class Test1 {
 		System.out.println("1");
 		System.out.println("234");
 	}
+	public void m3() {
+		
+	}
 	
 
 }

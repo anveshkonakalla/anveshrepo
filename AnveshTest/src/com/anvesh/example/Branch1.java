@@ -6,6 +6,7 @@ public class Branch1 {
 		
 		System.out.println("main");
 		System.out.println("git2");
+		System.out.println("git1");
 
 	}
 
